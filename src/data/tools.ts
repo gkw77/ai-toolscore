@@ -1,6 +1,6 @@
 // Tool Autopsy data model.
-// Every review carries: what the vendor claims → how I actually tested it → a verdict.
-// Nothing gets a verdict until it has been run on real work. Empty categories are honest gaps, not content.
+// Each tool carries a one-line intro and a score out of 10 from real use.
+// No tool gets a card until it has been run on real work. Empty categories are honest gaps, not content.
 
 export type Verdict = "use" | "depends" | "avoid";
 
@@ -10,18 +10,22 @@ export interface Review {
   name: string;
   /** vendor/README link */
   repo?: string;
-  /** approx stars, filled by a later refresh script — never hand-invented */
+  /** approx GitHub stars — external signal, filled by a later refresh script, never hand-invented */
   stars?: string;
-  /** what the README / vendor claims the tool does */
-  claim: string;
-  /** what I actually did with it (real project, real work) */
-  tested: string;
-  /** USE IT / DEPENDS / AVOID + one-line reason */
-  verdict: Verdict;
-  verdictNote: string;
-  /** when this tool is the wrong call */
-  whenNot?: string;
+  /** one line: what the tool is */
+  intro: string;
+  /** my score out of 10, from real use — not a README. 8+ keep, 6-7 depends, <=5 avoid */
+  score: number;
+  /** one line: why this score + when it's the wrong call */
+  reason: string;
   updated: string; // ISO date
+}
+
+/** verdict derived from the score: 8+ use, 6-7 depends, <=5 avoid */
+export function verdictFor(score: number): Verdict {
+  if (score >= 8) return "use";
+  if (score >= 6) return "depends";
+  return "avoid";
 }
 
 export interface Subcategory {
@@ -39,7 +43,7 @@ export interface Category {
 }
 
 export const SITE_TAGLINE =
-  "AI developer tools are directories of noise. I run the ones that matter and tell you the truth — what holds up on real work, what doesn't, and when to avoid it.";
+  "AI developer tools are directories of noise. I run the ones that matter and score them out of 10 — from real work, not a README.";
 
 export const categories: Category[] = [
   {
@@ -55,15 +59,12 @@ export const categories: Category[] = [
             slug: "claude-code",
             name: "Claude Code",
             repo: "https://github.com/anthropics/claude-code",
-            claim:
-              "Anthropic's official agentic coding tool — lives in your terminal, reads your repo, edits files, runs commands and delegates subtasks.",
-            tested:
-              "Used as a primary development agent on real projects: a web game platform (Fastify + SQLite + nginx on a VPS), Godot games, an Astro website, and two public research repositories — spanning planning, implementation, debugging and deployment.",
-            verdict: "use",
-            verdictNote: "The reference for the whole category; everything else is compared to it.",
-            whenNot:
-              "You want a thin autocomplete in your existing IDE and don't want an agent touching your filesystem.",
-            updated: "2026-09-07",
+            intro:
+              "Anthropic's agentic coding tool: lives in your terminal, reads your repo, edits files, runs commands and delegates subtasks.",
+            score: 9,
+            reason:
+              "The category reference — daily driver across web, games and research repos. Skip it if you want IDE autocomplete, not an agent that touches your filesystem.",
+            updated: "2026-09-08",
           },
         ],
       },

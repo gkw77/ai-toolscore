@@ -1,8 +1,8 @@
 ---
-import { categories, SITE_TAGLINE, type Verdict } from "../data/tools";
+import { categories, SITE_TAGLINE, verdictFor } from "../data/tools";
 import "../styles/global.css";
 
-const verdictLabel: Record<Verdict, string> = {
+const verdictLabel: Record<ReturnType<typeof verdictFor>, string> = {
   use: "USE IT",
   depends: "DEPENDS",
   avoid: "AVOID",
@@ -31,7 +31,7 @@ const reviewedCount = categories.reduce(
         <p class="kicker">tool-autopsy</p>
         <h1>AI developer tools, autopsied.</h1>
         <p class="tagline">{SITE_TAGLINE}</p>
-        <p class="meta">{reviewedCount} reviewed · last updated {today} · <a href="#method">how this works</a></p>
+        <p class="meta">{reviewedCount} scored · last updated {today} · <a href="#method">how this works</a></p>
       </div>
     </header>
 
@@ -47,33 +47,29 @@ const reviewedCount = categories.reduce(
             <div class="sub">
               <h3>{sub.title}</h3>
               {sub.reviews.length === 0 ? (
-                <p class="empty">Not reviewed yet — I only review tools I've run on real work.</p>
+                <p class="empty">Not reviewed yet — I only score tools I've run on real work.</p>
               ) : (
                 <ul class="reviews">
-                  {sub.reviews.map((r) => (
-                    <li class="review" id={r.slug}>
-                      <div class="row1">
-                        <span class="name">{r.name}</span>
-                        {r.stars && <span class="stars">★ {r.stars}</span>}
-                        {r.repo && <a class="repo" href={r.repo}>repo ↗</a>}
-                      </div>
-                      <div class="verdict verdict-{r.verdict}">{verdictLabel[r.verdict]}</div>
-                      <p class="verdict-note">{r.verdictNote}</p>
-
-                      <dl>
-                        <dt>What it claims</dt>
-                        <dd>{r.claim}</dd>
-                        <dt>How I tested it</dt>
-                        <dd>{r.tested}</dd>
-                        {r.whenNot && (
-                          <>
-                            <dt>When NOT to use it</dt>
-                            <dd>{r.whenNot}</dd>
-                          </>
-                        )}
-                      </dl>
-                    </li>
-                  ))}
+                  {sub.reviews.map((r) => {
+                    const v = verdictFor(r.score);
+                    return (
+                      <li class="review" id={r.slug}>
+                        <div class="top">
+                          <div class="who">
+                            <span class="name">{r.name}</span>
+                            {r.repo && <a class="repo" href={r.repo}>repo ↗</a>}
+                            {r.stars && <span class="stars">★ {r.stars} GH</span>}
+                          </div>
+                          <div class="scorebox">
+                            <span class={"score score-" + v}>★ {r.score.toFixed(1)}</span>
+                            <span class={"verdict verdict-" + v}>{verdictLabel[v]}</span>
+                          </div>
+                        </div>
+                        <p class="intro">{r.intro}</p>
+                        <p class="reason"><strong>Reason:</strong> {r.reason}</p>
+                      </li>
+                    );
+                  })}
                 </ul>
               )}
             </div>
@@ -85,10 +81,11 @@ const reviewedCount = categories.reduce(
     <footer id="method">
       <h2>The method</h2>
       <p>
-        No tool gets a verdict here until it has been run on real work — not a tutorial, a demo, or
-        a README. Each review states <em>what the vendor claims</em>, then <em>what I actually did</em>,
-        then a verdict. Star counts are fetched by a script, never typed by hand. Empty categories are
-        honest gaps: a tool I haven't run doesn't get a card.
+        No tool gets a score here until it has been run on real work — not a tutorial, a demo, or
+        a README. Scores are out of 10: 8+ is a tool to reach for, 6–7 depends on the situation,
+        5 or below to avoid. Each card gives one line on what the tool is and one line on why it
+        scored that way. External star counts, when shown, are fetched by a script — never typed by
+        hand. Empty categories are honest gaps: a tool I haven't run doesn't get a card.
       </p>
       <p>
         This site is the outward half of a private rule set that audits itself — read the confession at
