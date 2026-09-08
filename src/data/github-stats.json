@@ -1,0 +1,57 @@
+{
+  "anomalyco/opencode": {
+    "stars": 205816,
+    "pushedAt": "2026-09-08T11:35:34Z",
+    "fetchedAt": "2026-09-08T11:41:01.604Z"
+  },
+  "anthropics/claude-code": {
+    "stars": 144419,
+    "pushedAt": "2026-09-06T02:54:20Z",
+    "fetchedAt": "2026-09-08T11:41:01.982Z"
+  },
+  "openai/codex": {
+    "stars": 122432,
+    "pushedAt": "2026-09-08T11:27:36Z",
+    "fetchedAt": "2026-09-08T11:41:02.382Z"
+  },
+  "earendil-works/pi": {
+    "stars": 103004,
+    "pushedAt": "2026-09-08T11:38:30Z",
+    "fetchedAt": "2026-09-08T11:41:02.750Z"
+  },
+  "QwenLM/qwen-code": {
+    "stars": 27713,
+    "pushedAt": "2026-09-08T11:40:58Z",
+    "fetchedAt": "2026-09-08T11:41:03.110Z"
+  },
+  "esengine/DeepSeek-Reasonix": {
+    "stars": 35453,
+    "pushedAt": "2026-09-08T10:23:37Z",
+    "fetchedAt": "2026-09-08T11:41:03.481Z"
+  },
+  "cline/cline": {
+    "stars": 67660,
+    "pushedAt": "2026-09-08T11:33:54Z",
+    "fetchedAt": "2026-09-08T11:41:03.883Z"
+  },
+  "continuedev/continue": {
+    "stars": 35833,
+    "pushedAt": "2026-09-08T10:01:48Z",
+    "fetchedAt": "2026-09-08T11:41:04.255Z"
+  },
+  "paul-gauthier/aider": {
+    "stars": 48827,
+    "pushedAt": "2026-05-22T14:02:20Z",
+    "fetchedAt": "2026-09-08T11:41:05.134Z"
+  },
+  "All-Hands-AI/OpenHands": {
+    "stars": 86812,
+    "pushedAt": "2026-09-08T06:19:25Z",
+    "fetchedAt": "2026-09-08T11:41:05.837Z"
+  },
+  "block/goose": {
+    "stars": 54022,
+    "pushedAt": "2026-09-08T04:38:02Z",
+    "fetchedAt": "2026-09-08T11:41:06.612Z"
+  }
+}

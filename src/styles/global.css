@@ -99,6 +99,7 @@ a:hover { text-decoration-thickness: 2px; }
 
 .scorebox { display: flex; align-items: center; gap: 10px; }
 .score { font-size: 21px; font-weight: 750; letter-spacing: -0.01em; }
+.score .of10 { font-size: 12px; font-weight: 600; color: var(--muted); margin-left: 1px; }
 .score-use { color: var(--use); }
 .score-depends { color: var(--depends); }
 .score-avoid { color: var(--avoid); }
@@ -114,6 +115,7 @@ a:hover { text-decoration-thickness: 2px; }
 .verdict-depends { background: #f7ecd8; color: var(--depends); }
 .verdict-avoid { background: #f8e3e1; color: var(--avoid); }
 
+.gh { margin: 8px 0 0; font-size: 12.5px; color: var(--muted); }
 .intro { margin: 11px 0 0; font-size: 15px; color: #3d3933; }
 .reason { margin: 6px 0 0; font-size: 14px; color: var(--muted); }
 .reason strong { color: var(--ink); font-weight: 600; }

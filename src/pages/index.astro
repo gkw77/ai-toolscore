@@ -1,17 +1,42 @@
 ---
-import { categories, SITE_TAGLINE, verdictFor } from "../data/tools";
+import { categories, SITE_TAGLINE } from "../data/categories";
+import { reviews, verdictFor } from "../data/reviews";
+import type { Review } from "../data/reviews";
+import stats from "../data/github-stats.json";
 import "../styles/global.css";
 
-const verdictLabel: Record<ReturnType<typeof verdictFor>, string> = {
-  use: "USE IT",
-  depends: "DEPENDS",
-  avoid: "AVOID",
-};
+const verdictLabel = { use: "USE IT", depends: "DEPENDS", avoid: "AVOID" } as const;
+
 const today = new Date().toISOString().slice(0, 10);
-const reviewedCount = categories.reduce(
-  (n, c) => n + c.subcategories.reduce((m, s) => m + s.reviews.length, 0),
-  0
-);
+
+// stats file is fetched by scripts/gh-fetch.mjs on deploy; if it's missing a repo
+// (not yet fetched), we still render the judgment card — just without live numbers.
+type GhStats = Record<string, { stars: number; pushedAt: string }>;
+const gh = stats as GhStats;
+
+const byId = (cat: string, sub: string) =>
+  reviews.filter((r) => r.cat === cat && r.sub === sub);
+
+function fmt(n: number): string {
+  if (n >= 1_000_000) return (n / 1_000_000).toFixed(1).replace(/\.0$/, "") + "m";
+  if (n >= 1_000) return (n / 1_000).toFixed(1).replace(/\.0$/, "") + "k";
+  return String(n);
+}
+function pushAge(d: string): string {
+  const days = Math.floor((Date.now() - new Date(d).getTime()) / 86_400_000);
+  if (days < 1) return "pushed today";
+  if (days === 1) return "pushed yesterday";
+  if (days < 30) return `pushed ${days}d ago`;
+  return `pushed ${new Date(d).toISOString().slice(0, 10)}`;
+}
+const scoredCount = reviews.length;
+const grouped = categories.map((c) => ({
+  ...c,
+  subcategories: c.subcategories.map((s) => ({
+    ...s,
+    items: byId(c.id, s.id),
+  })),
+}));
 ---
 
 <!doctype html>
@@ -20,7 +45,7 @@ const reviewedCount = categories.reduce(
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={SITE_TAGLINE} />
-    <title>Tool Autopsy — AI developer tools I actually run</title>
+    <title>toolscore — AI dev tools, scored from GitHub</title>
   </head>
   <body>
     <header class="site-head">
@@ -28,15 +53,15 @@ const reviewedCount = categories.reduce(
         {categories.map((c) => <a href={`#${c.id}`}>{c.title}</a>)}
       </nav>
       <div class="hero">
-        <p class="kicker">tool-autopsy</p>
-        <h1>AI developer tools, autopsied.</h1>
+        <p class="kicker">toolscore</p>
+        <h1>AI developer tools, scored.</h1>
         <p class="tagline">{SITE_TAGLINE}</p>
-        <p class="meta">{reviewedCount} scored · last updated {today} · <a href="#method">how this works</a></p>
+        <p class="meta">{scoredCount} scored · live stats fetched {today} · <a href="#method">how this works</a></p>
       </div>
     </header>
 
     <main>
-      {categories.map((cat) => (
+      {grouped.map((cat) => (
         <section id={cat.id} class="category">
           <div class="cat-head">
             <h2>{cat.title}</h2>
@@ -46,27 +71,34 @@ const reviewedCount = categories.reduce(
           {cat.subcategories.map((sub) => (
             <div class="sub">
               <h3>{sub.title}</h3>
-              {sub.reviews.length === 0 ? (
-                <p class="empty">Not reviewed yet — I only score tools I've run on real work.</p>
+              {sub.items.length === 0 ? (
+                <p class="empty">Not scored yet — coming from the next GitHub sweep.</p>
               ) : (
                 <ul class="reviews">
-                  {sub.reviews.map((r) => {
+                  {sub.items.map((r: Review) => {
                     const v = verdictFor(r.score);
+                    const s = gh[r.fullName];
                     return (
-                      <li class="review" id={r.slug}>
+                      <li class="review" id={r.fullName.replace("/", "-")}>
                         <div class="top">
                           <div class="who">
                             <span class="name">{r.name}</span>
-                            {r.repo && <a class="repo" href={r.repo}>repo ↗</a>}
-                            {r.stars && <span class="stars">★ {r.stars} GH</span>}
+                            <a class="repo" href={`https://github.com/${r.fullName}`}>
+                              {r.fullName}
+                            </a>
                           </div>
                           <div class="scorebox">
-                            <span class={"score score-" + v}>★ {r.score.toFixed(1)}</span>
+                            <span class={"score score-" + v}>{r.score.toFixed(1)}<span class="of10">/10</span></span>
                             <span class={"verdict verdict-" + v}>{verdictLabel[v]}</span>
                           </div>
                         </div>
+                        {s && (
+                          <p class="gh">
+                            {fmt(s.stars)} stars on GitHub · {pushAge(s.pushedAt)}
+                          </p>
+                        )}
                         <p class="intro">{r.intro}</p>
-                        <p class="reason"><strong>Reason:</strong> {r.reason}</p>
+                        <p class="reason"><strong>The read:</strong> {r.reason}</p>
                       </li>
                     );
                   })}
@@ -79,17 +111,17 @@ const reviewedCount = categories.reduce(
     </main>
 
     <footer id="method">
-      <h2>The method</h2>
+      <h2>How this works</h2>
       <p>
-        No tool gets a score here until it has been run on real work — not a tutorial, a demo, or
-        a README. Scores are out of 10: 8+ is a tool to reach for, 6–7 depends on the situation,
-        5 or below to avoid. Each card gives one line on what the tool is and one line on why it
-        scored that way. External star counts, when shown, are fetched by a script — never typed by
-        hand. Empty categories are honest gaps: a tool I haven't run doesn't get a card.
+        Every tool here is collected from GitHub, not from a vendor press release. The score is a
+        judgment, not a poll: it blends the repo's live standing — stars and how recently it's being
+        pushed — with a read of what the repo actually is. Real software or a marketing wrapper?
+        Active or stalled? Right category or riding a keyword? Out of 10: 8+ is a tool to reach for,
+        6–7 depends on your situation, 5 or below to avoid.
       </p>
       <p>
-        This site is the outward half of a private rule set that audits itself — read the confession at
-        <a href="https://github.com/gkw77/rule-autopsy"> rule-autopsy</a>.
+        Star counts and push dates are fetched by a script on deploy — never typed by hand into a
+        card. The prose is the judgment and it can be wrong; the numbers can be checked.
       </p>
     </footer>
   </body>
