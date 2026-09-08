@@ -158,7 +158,7 @@ export const reviews: Review[] = [
     intro: "A programming framework for building agentic AI — the project that popularized multi-agent orchestration.",
     score: 5.6,
     reason:
-      "A giant, hugely influential repo whose main branch has gone quiet since April 2026 — Microsoft's active agent work moved to microsoft/agent-framework. The stars hide the stall: start on the successor, not this parked repo.",
+      "A giant, hugely influential repo, but Microsoft stopped merging on it in April 2026 — its active agent work now lives at microsoft/agent-framework. The community still files PRs that pile up unmerged. Start new work on the successor; treat classic AutoGen as history, not a base to build on.",
     updated: "2026-09-08",
   },
   {
@@ -361,7 +361,7 @@ export const reviews: Review[] = [
     intro: "A framework for evaluating LLMs and LLM systems, with an open registry of benchmarks.",
     score: 6.0,
     reason:
-      "Still the canonical public registry of eval benchmarks and hugely influential. But the repo has sat quiet since April 2026 — treat it as a reference to draw from, not a maintained framework to build on.",
+      "Still the canonical public registry of eval benchmarks and hugely influential. The code hasn't moved since April 2026 — community PRs still arrive but sit unmerged. Draw from it as a reference; don't bet a product on it as a maintained framework.",
     updated: "2026-09-08",
   },
   {
@@ -421,18 +421,6 @@ export const reviews: Review[] = [
       "The most-starred repo on this whole board (165k) and hugely influential — but momentum moved to ComfyUI long ago and releases have slowed to a trickle. Fine if it already does your job; a fresh start should look at the active options, not the legacy giant.",
     updated: "2026-09-08",
   },
-  {
-    cat: "media-generation",
-    sub: "image-gen",
-    fullName: "lllyasviel/Fooocus",
-    name: "Fooocus",
-    intro: "A local image generator focused on prompting — start typing, get images, no node graphs.",
-    score: 6.2,
-    reason:
-      "The friendliest on-ramp to local generation: lllyasviel stripped it down to prompt-and-generate. It's a one-person project with a bursty release cadence (quiet since late 2025) — great for beginners, not a bet to build a pipeline on.",
-    updated: "2026-09-08",
-  },
-
   // ── Media generation · video & audio ──────────────────────────────────────
   {
     cat: "media-generation",
@@ -465,17 +453,6 @@ export const reviews: Review[] = [
     score: 6.0,
     reason:
       "A methodology-and-skills package more than a model or engine, and the pitch is maximal — 'world's first', 100+ tools. Five months and 56k stars is a viral-growth signal, not a maturity signal: interesting if you already run agent skills, young otherwise.",
-    updated: "2026-09-08",
-  },
-  {
-    cat: "media-generation",
-    sub: "video-audio-gen",
-    fullName: "coqui-ai/TTS",
-    name: "Coqui TTS",
-    intro: "A battle-tested text-to-speech toolkit with a large model zoo.",
-    score: 4.5,
-    reason:
-      "46k stars but the company shut down in 2024 and the repo hasn't been touched since — the clearest case on this board of stars not meaning maintained. Mine it for models and ideas; don't start a project on unmaintained code.",
     updated: "2026-09-08",
   },
 ];
