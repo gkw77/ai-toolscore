@@ -58,7 +58,7 @@ export const categories: Category[] = [
             claim:
               "Anthropic's official agentic coding tool — lives in your terminal, reads your repo, edits files, runs commands and delegates subtasks.",
             tested:
-              "Daily driver for six months across very different workloads: a Node.js game platform (Fastify + SQLite + nginx, deployed to a VPS), three Godot games, an Astro site, and two public research repos. This site's rules and receipts were written with it.",
+              "Used as a primary development agent on real projects: a web game platform (Fastify + SQLite + nginx on a VPS), Godot games, an Astro website, and two public research repositories — spanning planning, implementation, debugging and deployment.",
             verdict: "use",
             verdictNote: "The reference for the whole category; everything else is compared to it.",
             whenNot:

@@ -1,6 +1,8 @@
 import { defineConfig } from 'astro/config';
 
 // https://astro.build/config
+// site/base pinned for GitHub Pages (project pages sub-path). Local `astro dev` is unaffected.
 export default defineConfig({
-  // site/base left empty for local dev; set at deploy time for GitHub Pages
+  site: 'https://gkw77.github.io',
+  base: '/tool-autopsy/',
 });
