@@ -21,36 +21,36 @@ export const SITE_TAGLINE =
 export const categories: Category[] = [
   {
     id: "code-writing-agents",
-    title: "AI coding agents",
-    blurb: "Agents that plan, write and edit code for you — terminal CLIs, IDE agents, and self-hosted platforms.",
+    title: "Coding agents",
+    blurb: "Write, edit and run code for you.",
     subcategories: [
-      { id: "terminal-agents", title: "Terminal agents" },
-      { id: "ide-agents", title: "IDE agents" },
-      { id: "self-hosted-agents", title: "Self-hosted / open-source agents" },
+      { id: "terminal-agents", title: "Terminal" },
+      { id: "ide-agents", title: "In your IDE" },
+      { id: "self-hosted-agents", title: "Self-hosted" },
     ],
   },
   {
     id: "build-your-own-agent",
-    title: "Build your own agent",
-    blurb: "Assemble your own agent from parts — orchestration frameworks, and gateways that put every model behind one API.",
+    title: "Frameworks & gateways",
+    blurb: "Build your own agent — or put every model behind one key.",
     subcategories: [
       { id: "agent-frameworks", title: "Agent frameworks" },
-      { id: "model-gateways", title: "Model gateways & API access" },
+      { id: "model-gateways", title: "Model gateways" },
     ],
   },
   {
     id: "browser-computer-use",
-    title: "Browser & computer-use",
-    blurb: "Agents that operate the web and your desktop — clicking, typing and driving real UIs instead of just editing files.",
+    title: "Web & desktop agents",
+    blurb: "Agents that click, type and drive real UIs.",
     subcategories: [
-      { id: "web-agents", title: "Web / browser agents" },
-      { id: "computer-use-agents", title: "Computer-use agents" },
+      { id: "web-agents", title: "On the web" },
+      { id: "computer-use-agents", title: "On your desktop" },
     ],
   },
   {
     id: "extend-your-agent",
-    title: "Extend your agent",
-    blurb: "MCP servers, skills and prompts that bolt new abilities onto the agent you already run.",
+    title: "MCP servers & skills",
+    blurb: "Bolt new abilities onto the agent you already run.",
     subcategories: [
       { id: "mcp-servers", title: "MCP servers" },
       { id: "skills-prompts", title: "Skills & prompts" },
@@ -58,8 +58,8 @@ export const categories: Category[] = [
   },
   {
     id: "ship-it-safely",
-    title: "Ship it safely",
-    blurb: "Evals and observability — measure an agent before it ships and watch it after.",
+    title: "Evals & observability",
+    blurb: "Measure an agent before it ships, watch it after.",
     subcategories: [
       { id: "evals-observability", title: "Evals & observability" },
     ],
@@ -67,10 +67,10 @@ export const categories: Category[] = [
   {
     id: "media-generation",
     title: "Media generation",
-    blurb: "Images, video and audio from text — creator tools, curated hard because the top of this list is noisy.",
+    blurb: "Images, video and audio from a prompt.",
     subcategories: [
       { id: "image-gen", title: "Image generation" },
-      { id: "video-audio-gen", title: "Video & audio generation" },
+      { id: "video-audio-gen", title: "Video & audio" },
     ],
   },
 ];

@@ -53,5 +53,140 @@
     "stars": 54022,
     "pushedAt": "2026-09-08T04:38:02Z",
     "fetchedAt": "2026-09-08T11:41:06.612Z"
+  },
+  "langchain-ai/langchain": {
+    "stars": 145928,
+    "pushedAt": "2026-09-08T11:55:24Z",
+    "fetchedAt": "2026-09-08T12:55:25.449Z"
+  },
+  "microsoft/autogen": {
+    "stars": 60867,
+    "pushedAt": "2026-04-15T11:59:09Z",
+    "fetchedAt": "2026-09-08T12:55:26.094Z"
+  },
+  "crewAIInc/crewAI": {
+    "stars": 58237,
+    "pushedAt": "2026-09-08T07:22:24Z",
+    "fetchedAt": "2026-09-08T12:55:26.993Z"
+  },
+  "QuantumNous/new-api": {
+    "stars": 47604,
+    "pushedAt": "2026-09-08T11:52:16Z",
+    "fetchedAt": "2026-09-08T12:55:27.550Z"
+  },
+  "maximhq/bifrost": {
+    "stars": 7887,
+    "pushedAt": "2026-09-08T12:43:04Z",
+    "fetchedAt": "2026-09-08T12:55:28.711Z"
+  },
+  "browser-use/browser-use": {
+    "stars": 113090,
+    "pushedAt": "2026-09-07T19:55:36Z",
+    "fetchedAt": "2026-09-08T12:55:29.271Z"
+  },
+  "vercel-labs/agent-browser": {
+    "stars": 42165,
+    "pushedAt": "2026-09-08T02:56:57Z",
+    "fetchedAt": "2026-09-08T12:55:30.146Z"
+  },
+  "feder-cr/AIHawk": {
+    "stars": 30324,
+    "pushedAt": "2026-09-08T12:54:28Z",
+    "fetchedAt": "2026-09-08T12:55:30.680Z"
+  },
+  "trycua/cua": {
+    "stars": 22354,
+    "pushedAt": "2026-09-08T07:37:22Z",
+    "fetchedAt": "2026-09-08T12:55:31.276Z"
+  },
+  "simular-ai/Agent-S": {
+    "stars": 12243,
+    "pushedAt": "2026-09-05T22:02:40Z",
+    "fetchedAt": "2026-09-08T12:55:32.190Z"
+  },
+  "github/github-mcp-server": {
+    "stars": 32807,
+    "pushedAt": "2026-09-08T11:18:50Z",
+    "fetchedAt": "2026-09-08T12:55:32.740Z"
+  },
+  "microsoft/playwright-mcp": {
+    "stars": 36892,
+    "pushedAt": "2026-09-04T22:45:53Z",
+    "fetchedAt": "2026-09-08T12:55:33.410Z"
+  },
+  "DeusData/codebase-memory-mcp": {
+    "stars": 42646,
+    "pushedAt": "2026-09-08T07:35:01Z",
+    "fetchedAt": "2026-09-08T12:55:33.932Z"
+  },
+  "obra/superpowers": {
+    "stars": 283086,
+    "pushedAt": "2026-09-04T23:04:36Z",
+    "fetchedAt": "2026-09-08T12:55:34.360Z"
+  },
+  "affaan-m/ECC": {
+    "stars": 253692,
+    "pushedAt": "2026-09-07T22:36:32Z",
+    "fetchedAt": "2026-09-08T12:55:34.755Z"
+  },
+  "langfuse/langfuse": {
+    "stars": 34343,
+    "pushedAt": "2026-09-08T12:54:13Z",
+    "fetchedAt": "2026-09-08T12:55:35.295Z"
+  },
+  "openai/evals": {
+    "stars": 19409,
+    "pushedAt": "2026-04-14T15:29:57Z",
+    "fetchedAt": "2026-09-08T12:55:36.360Z"
+  },
+  "AgentOps-AI/agentops": {
+    "stars": 5811,
+    "pushedAt": "2026-06-25T08:25:03Z",
+    "fetchedAt": "2026-09-08T12:55:36.885Z"
+  },
+  "Comfy-Org/ComfyUI": {
+    "stars": 132035,
+    "pushedAt": "2026-09-08T13:02:20Z",
+    "fetchedAt": "2026-09-08T13:15:53.051Z"
+  },
+  "AUTOMATIC1111/stable-diffusion-webui": {
+    "stars": 164857,
+    "pushedAt": "2026-03-02T07:00:53Z",
+    "fetchedAt": "2026-09-08T13:15:53.542Z"
+  },
+  "lllyasviel/Fooocus": {
+    "stars": 52932,
+    "pushedAt": "2025-12-01T19:17:07Z",
+    "fetchedAt": "2026-09-08T13:15:54.024Z"
+  },
+  "invoke-ai/InvokeAI": {
+    "stars": 28168,
+    "pushedAt": "2026-09-06T18:55:55Z",
+    "fetchedAt": "2026-09-08T13:15:54.489Z"
+  },
+  "RVC-Boss/GPT-SoVITS": {
+    "stars": 61672,
+    "pushedAt": "2026-08-18T09:16:25Z",
+    "fetchedAt": "2026-09-08T13:15:55.005Z"
+  },
+  "2noise/ChatTTS": {
+    "stars": 39821,
+    "pushedAt": "2026-04-10T16:33:48Z",
+    "fetchedAt": "2026-09-08T13:15:55.582Z"
+  },
+  "coqui-ai/TTS": {
+    "stars": 45988,
+    "pushedAt": "2024-08-16T12:07:14Z",
+    "fetchedAt": "2026-09-08T13:15:56.035Z"
+  },
+  "Wan-Video/Wan2.2": {
+    "stars": 17425,
+    "pushedAt": "2026-03-17T10:48:41Z",
+    "fetchedAt": "2026-09-08T13:15:57.041Z"
+  },
+  "calesthio/OpenMontage": {
+    "stars": 56645,
+    "pushedAt": "2026-09-06T05:02:34Z",
+    "fetchedAt": "2026-09-08T13:15:58.576Z"
   }
 }
