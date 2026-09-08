@@ -126,10 +126,10 @@ export const reviews: Review[] = [
     updated: "2026-09-08",
   },
 
-  // ── Code-writing agents · self-hosted ──────────────────────────────────────
+  // ── Build your own agent · frameworks ─────────────────────────────────────
   {
-    cat: "code-writing-agents",
-    sub: "self-hosted-agents",
+    cat: "build-your-own-agent",
+    sub: "agent-frameworks",
     fullName: "earendil-works/pi",
     name: "pi",
     intro:
@@ -139,6 +139,8 @@ export const reviews: Review[] = [
       "A toolkit more than a turnkey agent — you compose the loop you want and can run it fully locally. Enormously capable, but you build more yourself; not the pick if you want agent-in-a-box.",
     updated: "2026-09-08",
   },
+
+  // ── Code-writing agents · self-hosted ──────────────────────────────────────
   {
     cat: "code-writing-agents",
     sub: "self-hosted-agents",
